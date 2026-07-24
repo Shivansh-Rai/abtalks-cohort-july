@@ -43,3 +43,6 @@ Thumbs.db
 *.log
 *.tmp
 *.temp
+
+# Local vector database storage
+chroma_db/
