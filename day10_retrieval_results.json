@@ -1,0 +1,546 @@
+[
+  {
+    "question_num": 1,
+    "question": "What's my deductible?",
+    "classification": {
+      "type": "structured",
+      "confidence": 0.7,
+      "keywords": [
+        "deductible"
+      ]
+    },
+    "retrieval": {
+      "total_blocks": 3,
+      "sql_blocks": 3,
+      "vector_blocks": 0,
+      "blocks": [
+        {
+          "source": "sql",
+          "content": "Plan Gold PPO: Monthly Premium: $500, Annual Deductible: $2000, Copay: 10%, Type: PPO",
+          "score": 1.0,
+          "metadata": {
+            "table": "plans",
+            "plan_id": "P101",
+            "plan_name": "Gold PPO"
+          }
+        },
+        {
+          "source": "sql",
+          "content": "Plan Silver HMO: Monthly Premium: $300, Annual Deductible: $1500, Copay: 20%, Type: HMO",
+          "score": 1.0,
+          "metadata": {
+            "table": "plans",
+            "plan_id": "P102",
+            "plan_name": "Silver HMO"
+          }
+        },
+        {
+          "source": "sql",
+          "content": "Plan Bronze HMO: Monthly Premium: $150, Annual Deductible: $1000, Copay: 30%, Type: HMO",
+          "score": 1.0,
+          "metadata": {
+            "table": "plans",
+            "plan_id": "P103",
+            "plan_name": "Bronze HMO"
+          }
+        }
+      ]
+    },
+    "manual_score": "good",
+    "reasoning": "Direct SQL match for structured question; 3 results"
+  },
+  {
+    "question_num": 2,
+    "question": "What's the copay for the Gold plan?",
+    "classification": {
+      "type": "structured",
+      "confidence": 0.85,
+      "keywords": [
+        "copay",
+        "plan_info"
+      ]
+    },
+    "retrieval": {
+      "total_blocks": 1,
+      "sql_blocks": 1,
+      "vector_blocks": 0,
+      "blocks": [
+        {
+          "source": "sql",
+          "content": "Plan Gold PPO: Monthly Premium: $500, Annual Deductible: $2000, Copay: 10%, Type: PPO",
+          "score": 1.0,
+          "metadata": {
+            "table": "plans",
+            "plan_id": "P101",
+            "plan_name": "Gold PPO"
+          }
+        }
+      ]
+    },
+    "manual_score": "partial",
+    "reasoning": "SQL results found but may be incomplete for this question"
+  },
+  {
+    "question_num": 3,
+    "question": "What's the monthly premium for Silver?",
+    "classification": {
+      "type": "structured",
+      "confidence": 0.85,
+      "keywords": [
+        "premium",
+        "plan_info"
+      ]
+    },
+    "retrieval": {
+      "total_blocks": 1,
+      "sql_blocks": 1,
+      "vector_blocks": 0,
+      "blocks": [
+        {
+          "source": "sql",
+          "content": "Plan Silver HMO: Monthly Premium: $300, Annual Deductible: $1500, Copay: 20%, Type: HMO",
+          "score": 1.0,
+          "metadata": {
+            "table": "plans",
+            "plan_id": "P102",
+            "plan_name": "Silver HMO"
+          }
+        }
+      ]
+    },
+    "manual_score": "partial",
+    "reasoning": "SQL results found but may be incomplete for this question"
+  },
+  {
+    "question_num": 4,
+    "question": "What's the status of claim C1001?",
+    "classification": {
+      "type": "structured",
+      "confidence": 0.7,
+      "keywords": [
+        "claim_status"
+      ]
+    },
+    "retrieval": {
+      "total_blocks": 5,
+      "sql_blocks": 5,
+      "vector_blocks": 0,
+      "blocks": [
+        {
+          "source": "sql",
+          "content": "Claim C1001: Procedure: X-ray, Amount: $250, Status: Pending, Filed: 2023-04-01",
+          "score": 1.0,
+          "metadata": {
+            "table": "claims",
+            "claim_id": "C1001",
+            "status": "Pending"
+          }
+        },
+        {
+          "source": "sql",
+          "content": "Claim C1002: Procedure: Surgery, Amount: $1200, Status: Approved, Filed: 2023-03-15",
+          "score": 1.0,
+          "metadata": {
+            "table": "claims",
+            "claim_id": "C1002",
+            "status": "Approved"
+          }
+        },
+        {
+          "source": "sql",
+          "content": "Claim C1003: Procedure: X-ray, Amount: $150, Status: Denied, Filed: 2023-04-05",
+          "score": 1.0,
+          "metadata": {
+            "table": "claims",
+            "claim_id": "C1003",
+            "status": "Denied"
+          }
+        },
+        {
+          "source": "sql",
+          "content": "Claim C1004: Procedure: Surgery, Amount: $900, Status: Approved, Filed: 2023-03-20",
+          "score": 1.0,
+          "metadata": {
+            "table": "claims",
+            "claim_id": "C1004",
+            "status": "Approved"
+          }
+        },
+        {
+          "source": "sql",
+          "content": "Claim C1005: Procedure: X-ray, Amount: $50, Status: Pending, Filed: 2023-04-10",
+          "score": 1.0,
+          "metadata": {
+            "table": "claims",
+            "claim_id": "C1005",
+            "status": "Pending"
+          }
+        }
+      ]
+    },
+    "manual_score": "good",
+    "reasoning": "Direct SQL match for structured question; 5 results"
+  },
+  {
+    "question_num": 5,
+    "question": "What procedures are covered under the Bronze plan?",
+    "classification": {
+      "type": "both",
+      "confidence": 0.8,
+      "keywords": [
+        "procedure",
+        "plan_info",
+        "coverage"
+      ]
+    },
+    "retrieval": {
+      "total_blocks": 4,
+      "sql_blocks": 1,
+      "vector_blocks": 3,
+      "blocks": [
+        {
+          "source": "sql",
+          "content": "Plan Bronze HMO: Monthly Premium: $150, Annual Deductible: $1000, Copay: 30%, Type: HMO",
+          "score": 1.0,
+          "metadata": {
+            "table": "plans",
+            "plan_id": "P103",
+            "plan_name": "Bronze HMO"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Bronze HMO: $150/month premium, $1000 deductible, 30% coinsurance, network: Bronze",
+          "score": 0.45187079155797616,
+          "metadata": {
+            "chunk_id": "plan:P103",
+            "plan_type": "Bronze",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Silver HMO: $300/month premium, $1500 deductible, 20% coinsurance, network: Silver",
+          "score": 0.39441127569635015,
+          "metadata": {
+            "chunk_id": "plan:P102",
+            "plan_type": "Silver",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Gold PPO: $500/month premium, $2000 deductible, 10% coinsurance, network: Gold",
+          "score": 0.3924250427996721,
+          "metadata": {
+            "chunk_id": "plan:P101",
+            "plan_type": "Gold",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        }
+      ]
+    },
+    "manual_score": "good",
+    "reasoning": "Both SQL and vector results relevant; 4 strong results"
+  },
+  {
+    "question_num": 6,
+    "question": "Is physical therapy covered under the Silver plan?",
+    "classification": {
+      "type": "both",
+      "confidence": 0.8,
+      "keywords": [
+        "plan_info",
+        "coverage"
+      ]
+    },
+    "retrieval": {
+      "total_blocks": 4,
+      "sql_blocks": 1,
+      "vector_blocks": 3,
+      "blocks": [
+        {
+          "source": "sql",
+          "content": "Plan Silver HMO: Monthly Premium: $300, Annual Deductible: $1500, Copay: 20%, Type: HMO",
+          "score": 1.0,
+          "metadata": {
+            "table": "plans",
+            "plan_id": "P102",
+            "plan_name": "Silver HMO"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Silver HMO: $300/month premium, $1500 deductible, 20% coinsurance, network: Silver",
+          "score": 0.4724994071654963,
+          "metadata": {
+            "chunk_id": "plan:P102",
+            "plan_type": "Silver",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Bronze HMO: $150/month premium, $1000 deductible, 30% coinsurance, network: Bronze",
+          "score": 0.44830115103185425,
+          "metadata": {
+            "chunk_id": "plan:P103",
+            "plan_type": "Bronze",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Gold PPO: $500/month premium, $2000 deductible, 10% coinsurance, network: Gold",
+          "score": 0.441213136679164,
+          "metadata": {
+            "chunk_id": "plan:P101",
+            "plan_type": "Gold",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        }
+      ]
+    },
+    "manual_score": "good",
+    "reasoning": "Both SQL and vector results relevant; 4 strong results"
+  },
+  {
+    "question_num": 7,
+    "question": "Is maternity care covered on the Bronze plan?",
+    "classification": {
+      "type": "both",
+      "confidence": 0.8,
+      "keywords": [
+        "plan_info",
+        "coverage"
+      ]
+    },
+    "retrieval": {
+      "total_blocks": 4,
+      "sql_blocks": 1,
+      "vector_blocks": 3,
+      "blocks": [
+        {
+          "source": "sql",
+          "content": "Plan Bronze HMO: Monthly Premium: $150, Annual Deductible: $1000, Copay: 30%, Type: HMO",
+          "score": 1.0,
+          "metadata": {
+            "table": "plans",
+            "plan_id": "P103",
+            "plan_name": "Bronze HMO"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Bronze HMO: $150/month premium, $1000 deductible, 30% coinsurance, network: Bronze",
+          "score": 0.4754023738926217,
+          "metadata": {
+            "chunk_id": "plan:P103",
+            "plan_type": "Bronze",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Silver HMO: $300/month premium, $1500 deductible, 20% coinsurance, network: Silver",
+          "score": 0.43676778815902545,
+          "metadata": {
+            "chunk_id": "plan:P102",
+            "plan_type": "Silver",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Gold PPO: $500/month premium, $2000 deductible, 10% coinsurance, network: Gold",
+          "score": 0.4336580708163792,
+          "metadata": {
+            "chunk_id": "plan:P101",
+            "plan_type": "Gold",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        }
+      ]
+    },
+    "manual_score": "good",
+    "reasoning": "Both SQL and vector results relevant; 4 strong results"
+  },
+  {
+    "question_num": 8,
+    "question": "Are specialist visits covered?",
+    "classification": {
+      "type": "unstructured",
+      "confidence": 0.7,
+      "keywords": [
+        "coverage"
+      ]
+    },
+    "retrieval": {
+      "total_blocks": 3,
+      "sql_blocks": 0,
+      "vector_blocks": 3,
+      "blocks": [
+        {
+          "source": "vector",
+          "content": "Gold PPO: $500/month premium, $2000 deductible, 10% coinsurance, network: Gold",
+          "score": 0.4000937490788924,
+          "metadata": {
+            "chunk_id": "plan:P101",
+            "plan_type": "Gold",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Bronze HMO: $150/month premium, $1000 deductible, 30% coinsurance, network: Bronze",
+          "score": 0.3983595500420959,
+          "metadata": {
+            "chunk_id": "plan:P103",
+            "plan_type": "Bronze",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Silver HMO: $300/month premium, $1500 deductible, 20% coinsurance, network: Silver",
+          "score": 0.3981082401958239,
+          "metadata": {
+            "chunk_id": "plan:P102",
+            "plan_type": "Silver",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        }
+      ]
+    },
+    "manual_score": "partial",
+    "reasoning": "Vector results retrieved but relevance is moderate"
+  },
+  {
+    "question_num": 9,
+    "question": "I have the Gold plan and want to know if surgery is covered and what my copay would be",
+    "classification": {
+      "type": "both",
+      "confidence": 0.8,
+      "keywords": [
+        "copay",
+        "plan_info",
+        "coverage"
+      ]
+    },
+    "retrieval": {
+      "total_blocks": 4,
+      "sql_blocks": 1,
+      "vector_blocks": 3,
+      "blocks": [
+        {
+          "source": "sql",
+          "content": "Plan Gold PPO: Monthly Premium: $500, Annual Deductible: $2000, Copay: 10%, Type: PPO",
+          "score": 1.0,
+          "metadata": {
+            "table": "plans",
+            "plan_id": "P101",
+            "plan_name": "Gold PPO"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Gold PPO: $500/month premium, $2000 deductible, 10% coinsurance, network: Gold",
+          "score": 0.5088097374806652,
+          "metadata": {
+            "chunk_id": "plan:P101",
+            "plan_type": "Gold",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Silver HMO: $300/month premium, $1500 deductible, 20% coinsurance, network: Silver",
+          "score": 0.48351488227946104,
+          "metadata": {
+            "chunk_id": "plan:P102",
+            "plan_type": "Silver",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Bronze HMO: $150/month premium, $1000 deductible, 30% coinsurance, network: Bronze",
+          "score": 0.46904848266712457,
+          "metadata": {
+            "chunk_id": "plan:P103",
+            "plan_type": "Bronze",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        }
+      ]
+    },
+    "manual_score": "good",
+    "reasoning": "Both SQL and vector results relevant; 4 strong results"
+  },
+  {
+    "question_num": 10,
+    "question": "What's the enrollment process and are there waiting periods?",
+    "classification": {
+      "type": "unstructured",
+      "confidence": 0.5,
+      "keywords": []
+    },
+    "retrieval": {
+      "total_blocks": 3,
+      "sql_blocks": 0,
+      "vector_blocks": 3,
+      "blocks": [
+        {
+          "source": "vector",
+          "content": "Bronze HMO: $150/month premium, $1000 deductible, 30% coinsurance, network: Bronze",
+          "score": 0.3652762586856773,
+          "metadata": {
+            "chunk_id": "plan:P103",
+            "plan_type": "Bronze",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Silver HMO: $300/month premium, $1500 deductible, 20% coinsurance, network: Silver",
+          "score": 0.36370144582091024,
+          "metadata": {
+            "chunk_id": "plan:P102",
+            "plan_type": "Silver",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        },
+        {
+          "source": "vector",
+          "content": "Gold PPO: $500/month premium, $2000 deductible, 10% coinsurance, network: Gold",
+          "score": 0.3559116639344464,
+          "metadata": {
+            "chunk_id": "plan:P101",
+            "plan_type": "Gold",
+            "section": "coverage",
+            "source_file": "D:\\ABTalks work\\cohort testing\\abtalks-cohort-july\\data\\plans.json"
+          }
+        }
+      ]
+    },
+    "manual_score": "partial",
+    "reasoning": "Vector results retrieved but relevance is moderate"
+  }
+]
